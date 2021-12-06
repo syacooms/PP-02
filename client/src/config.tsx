@@ -1,0 +1,1 @@
+export const REACT_APP_CLIENT_KEY = 'AIzaSyA-r8Xm5KOHQsSUkBq9KDqXz2F9w_CH1Fo';
