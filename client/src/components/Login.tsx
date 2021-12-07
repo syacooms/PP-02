@@ -5,7 +5,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Google from './google/google';
 
-const Login: React.FC = () => {
+const Login = () => {
   return (
     <Wrapper>
       <AvatarFix>

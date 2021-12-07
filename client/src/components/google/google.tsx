@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login, logout } from '../../features/user';
 import { RootState } from '../../redux/store';
+import { LogoutButton } from './Google.style';
 
 // Types
 export type userType = {
@@ -13,10 +14,10 @@ export type userType = {
 };
 
 const Google = () => {
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const googleClientId: string =
     '527957848261-n5rc46nhljj1k3fmmpdd2h467ei275p1.apps.googleusercontent.com';
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user.value);
   const [showLoginButton, setShowLoginButton] = React.useState(true);
   const [showLogoutButton, setShowLogoutButton] = React.useState(false);
@@ -52,6 +53,7 @@ const Google = () => {
     console.log('Login Failed:', res);
   };
   const onSignOutSuccess = () => {
+    localStorage.clear();
     alert('성공적으로 로그아웃 하였습니다.');
 
     dispatch(logout());
@@ -70,7 +72,11 @@ const Google = () => {
       {showLogoutButton ? (
         <GoogleLogout
           clientId={googleClientId}
-          render={(renderProps) => <button onClick={renderProps.onClick}>logout</button>}
+          render={(renderProps) => (
+            <LogoutButton onClick={renderProps.onClick} color="inherit">
+              logout
+            </LogoutButton>
+          )}
           buttonText="Logout"
           onLogoutSuccess={onSignOutSuccess}
         />
