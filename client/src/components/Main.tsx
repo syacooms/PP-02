@@ -37,7 +37,8 @@ const Main = () => {
 
   React.useEffect(() => {
     //local
-    if (localStorage.getItem('email') == null) {
+    if (localStorage.getItem('email') === null) {
+      console.log('empty check');
       localStorage.setItem('email', loginChk.email);
       localStorage.setItem('name', loginChk.name);
       localStorage.setItem('imageUrl', loginChk.imageUrl);
@@ -58,12 +59,13 @@ const Main = () => {
         name: name,
         imageUrl: imageUrl,
       } as userType;
+
       dispatch(login(userObj));
     }
   }, [dispatch, loginChk.email, loginChk.imageUrl, loginChk.name]);
 
   if (isLoading) return <LinearProgress />;
-  if (error) return <div>Something went wrong ...</div>;
+  if (error) return <div>what ...????</div>;
 
   return (
     <>

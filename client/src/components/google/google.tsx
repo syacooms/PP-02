@@ -46,6 +46,10 @@ const Google = () => {
       imageUrl: res.profileObj.imageUrl,
     };
 
+    localStorage.setItem('email', res.profileObj.email);
+    localStorage.setItem('name', res.profileObj.name);
+    localStorage.setItem('imageUrl', res.profileObj.imageUrl);
+
     dispatch(login(userObj));
     navigate('/main');
   };
