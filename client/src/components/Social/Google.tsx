@@ -15,7 +15,7 @@ export type userType = {
 
 const Google = () => {
   const googleClientId: string =
-    '527957848261-n5rc46nhljj1k3fmmpdd2h467ei275p1.apps.googleusercontent.com';
+    '527957848261-4kamrrn3qscjmc2j9cvec76188lhv2cq.apps.googleusercontent.com';
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user.value);
