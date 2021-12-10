@@ -3,7 +3,7 @@ import * as React from 'react';
 import { AvatarFix, Wrapper } from './Login.style';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
-import Google from './google/google';
+import Google from '../Social/Google';
 
 const Login = () => {
   return (
@@ -11,7 +11,7 @@ const Login = () => {
       <AvatarFix>
         <LockOutlinedIcon color="secondary" />
       </AvatarFix>
-      <Typography variant="h5">로그인</Typography>
+      <Typography variant="h5">Login</Typography>
       <Google />
     </Wrapper>
   );
