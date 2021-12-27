@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { login, logout } from '../../features/user';
 import { RootState } from '../../redux/store';
-import { LogoutButton } from './Google.style';
+import { LoginButton, LogoutButton } from './Google.style';
+import google from '../../img/google.png';
 
 // Types
 export type userType = {
@@ -69,6 +70,12 @@ const Google = () => {
       {showLoginButton ? (
         <GoogleLogin
           clientId={googleClientId}
+          render={(renderProps) => (
+            <LoginButton onClick={renderProps.onClick}>
+              <img className="icon" alt="" src={google} />
+              Google
+            </LoginButton>
+          )}
           onSuccess={onLoginSuccess}
           onFailure={onFailureSuccess}
         />
