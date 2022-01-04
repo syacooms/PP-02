@@ -1,15 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../redux/store';
-import Google from './Social/Google';
-import { login } from '../features/user';
-import AppBar from '@material-ui/core/AppBar';
-import { Badge, Box, Drawer, Grid, LinearProgress, Toolbar, Typography } from '@material-ui/core';
+import { RootState } from '../../redux/store';
+
+import { login } from '../../features/user';
+
+import { Badge, Drawer, Grid, LinearProgress } from '@material-ui/core';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import { useQuery } from 'react-query';
-import Item from './Item/Item';
-import Cart from './Cart/Cart';
+import Item from '../Item/Item';
+import Cart from '../Cart/Cart';
 import { StyledButton } from './Main.Style';
+
+import Nav from './Nav';
 
 // Types
 export type userType = {
@@ -100,16 +102,7 @@ const Main = () => {
 
   return (
     <>
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static" color="primary">
-          <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
-            <Typography variant="h6" component="div">
-              PP02
-            </Typography>
-            <Google />
-          </Toolbar>
-        </AppBar>
-      </Box>
+      <Nav />
       <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
         <Cart
           cartItems={cartItems}
@@ -118,7 +111,10 @@ const Main = () => {
         />
       </Drawer>
       <StyledButton onClick={() => setCartOpen(true)}>
-        <Badge badgeContent={getTotalItems(cartItems)} color="error">
+        <Badge
+          badgeContent={getTotalItems(cartItems)}
+          color="error"
+          style={{ position: 'fixed', marginTop: '100px' }}>
           <AddShoppingCartIcon />
         </Badge>
       </StyledButton>

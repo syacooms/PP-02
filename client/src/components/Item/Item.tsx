@@ -1,6 +1,6 @@
 import Button from '@material-ui/core/Button';
 // Types
-import { CartItemType } from '../Main';
+import { CartItemType } from '../Main/Main';
 // Styles
 import { Wrapper } from './Item.style';
 
