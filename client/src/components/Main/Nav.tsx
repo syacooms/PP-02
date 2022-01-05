@@ -11,7 +11,9 @@ const Nav = () => {
         <AppBar position="static" color="primary">
           <Toolbar style={{ display: 'flex', justifyContent: 'space-between' }}>
             <Typography variant="h6" component="div">
-              PP02
+              <Link to="/main" style={{ color: 'white', textDecoration: 'none' }}>
+                PP02
+              </Link>
             </Typography>
             <StyledUl>
               <li>

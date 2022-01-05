@@ -1,25 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../redux/store';
-
-import { login } from '../../features/user';
-
 import { Badge, Drawer, Grid, LinearProgress } from '@material-ui/core';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import { useQuery } from 'react-query';
 import Item from '../Item/Item';
 import Cart from '../Cart/Cart';
 import { StyledButton } from './Main.Style';
+import { loginAccess } from '../Login/LocalStorage';
 
 import Nav from './Nav';
 
 // Types
-export type userType = {
-  name: string;
-  email: string;
-  imageUrl: string;
-};
-
 export type CartItemType = {
   id: number;
   category: string;
@@ -70,32 +62,8 @@ const Main = () => {
 
   useEffect(() => {
     //login
-    if (localStorage.getItem('email') === null) {
-      console.log('empty check');
-      localStorage.setItem('email', loginChk.email);
-      localStorage.setItem('name', loginChk.name);
-      localStorage.setItem('imageUrl', loginChk.imageUrl);
-    } else {
-      let userObj = {
-        email: '',
-        name: '',
-        imageUrl: '',
-      };
-
-      let email = localStorage.getItem('email');
-      let name = localStorage.getItem('name');
-      let imageUrl = localStorage.getItem('imageUrl');
-
-      userObj = {
-        ...userObj,
-        email: email,
-        name: name,
-        imageUrl: imageUrl,
-      } as userType;
-
-      dispatch(login(userObj));
-    }
-  }, [dispatch, loginChk.email, loginChk.imageUrl, loginChk.name]);
+    loginAccess(dispatch, loginChk);
+  }, []);
 
   if (isLoading) return <LinearProgress />;
   if (error) return <div>what ...????</div>;
