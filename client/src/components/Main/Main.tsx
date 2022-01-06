@@ -8,7 +8,6 @@ import Item from '../Item/Item';
 import Cart from '../Cart/Cart';
 import { StyledButton } from './Main.Style';
 import { loginAccess } from '../Login/LocalStorage';
-
 import Nav from './Nav';
 
 // Types
@@ -71,6 +70,7 @@ const Main = () => {
   return (
     <>
       <Nav />
+
       <Drawer anchor="right" open={cartOpen} onClose={() => setCartOpen(false)}>
         <Cart
           cartItems={cartItems}
