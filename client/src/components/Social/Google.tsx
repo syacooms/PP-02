@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useEffect, useState } from 'react';
 import { GoogleLogin, GoogleLogout } from 'react-google-login';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -15,15 +15,15 @@ export type userType = {
 };
 
 const Google = () => {
-  const googleClientId: string =
-    '527957848261-4kamrrn3qscjmc2j9cvec76188lhv2cq.apps.googleusercontent.com';
+  const googleClientId = '527957848261-4kamrrn3qscjmc2j9cvec76188lhv2cq.apps.googleusercontent.com';
+  //const googleClientId = process.env.REACT_APP_CLIENT_ID ?? '';
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.user.value);
-  const [showLoginButton, setShowLoginButton] = React.useState(true);
-  const [showLogoutButton, setShowLogoutButton] = React.useState(false);
+  const [showLoginButton, setShowLoginButton] = useState(true);
+  const [showLogoutButton, setShowLogoutButton] = useState(false);
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (user.name !== '') {
       setShowLoginButton(false);
       setShowLogoutButton(true);
